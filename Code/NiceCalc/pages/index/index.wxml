@@ -5,6 +5,9 @@
     <text class="userinfo-nickname" bindtap="goCalc">{{userInfo.nickName}}</text>
   </view> -->
   <view class="usermotto">
-    <canvas style="width: 300px; height: 200px;" canvas-id="firstCanvas"></canvas>
+    <canvas style="width: 300px; height: 200px;" canvas-id="firstCanvas" 
+    bind:touchstart="getTouch"
+    bind:touchmove="draw"      
+    ></canvas>
   </view>
 </view>

@@ -4,7 +4,10 @@ var app = getApp()
 Page({
   data: {
     motto: 'Hello',
-    userInfo: {}
+    userInfo: {},
+    ifT:false,
+    canvas:null,
+    action:[]
   },
   //事件处理函数
   bindViewTap: function() {
@@ -12,8 +15,24 @@ Page({
       url: '../logs/logs'
     })
   },
-  haha:function (event) {
+  getTouch:function(event){
     console.log(event);
+   var _self = this;
+   _self.ifT = true;
+  },
+  draw:function(event){
+    console.log(event);
+    var _self = this;
+    console.log(this.canvas);
+    this.action.push({ x: event.touches[0].pageX, y: event.touches[0].pageY});
+
+    this.canvas.fillStyle = "#000";    
+    this.action.forEach(function(item){
+      _self.canvas.lineTo(item.x, item.y);
+    });
+   
+    this.canvas.stroke();    
+    this.canvas.draw();
   },
   onLoad: function () {
     console.log('onLoad')
@@ -34,7 +53,8 @@ Page({
   onReady: function (e) {
     // 使用 wx.createContext 获取绘图上下文 context
     var context = wx.createCanvasContext('firstCanvas')
-    console.log(context);
+    this.canvas = context;
+    this.action = new Array();
     context.setStrokeStyle("#00ff00")
     context.setLineWidth(5)
     context.rect(0, 0, 200, 200)
@@ -50,6 +70,7 @@ Page({
     context.moveTo(125, 80)
     // context.arc(120, 80, 5, 0, 2 * Math.PI, true)
     context.stroke()
+
     context.draw()
   }
 })
