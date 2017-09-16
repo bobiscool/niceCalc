@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 var app = getApp()
+var Num = require('./utils/num.js').Num
 Page({
   data: {
     motto: 'Hello',
@@ -55,8 +56,13 @@ Page({
     var context = wx.createCanvasContext('firstCanvas')
     this.canvas = context;
     this.action = new Array();
- 
+    console.log(Num);
+   
+    var b = new Num(10,10,10);
+    var c = new Num(20, 30, 100,b);
 
+    b.paint(context);
+    c.paint(context);
     context.draw()
   }
 })

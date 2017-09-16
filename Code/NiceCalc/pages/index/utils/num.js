@@ -10,14 +10,16 @@ function Num(x,y,num,parent){
   this.x = x;
   this.y = y;
   this.num = num;
-  this.hasParent = parent?parent:false;
+  this.parent = parent?parent:false;
 }
 
 Num.prototype = {
   getCenterX:function(context){
     // 拿到字体长度 
+    
     var _self = this;
-    return (this.x - context.measuretext(_self.num).width/2);
+    var _l = String(_self.num).length;
+    return (this.x - _l*3);
   },
   updateNum(num){
     //更新 当前数字对象
@@ -27,9 +29,8 @@ Num.prototype = {
      if(this.parent){
        context.save();
        context.beginPath();
-       context.strokeStyle = "rgb(0,0,0)"; 
-       context.moveTo(this.getCenterX(),this.y);
-       context.moveTo(this.parent.getCenterX(), this.parent.y);
+       context.moveTo(this.x,this.y-10);
+       context.lineTo(this.parent.x, this.parent.y);
        context.stroke();
        context.restore();
      } 
@@ -39,7 +40,10 @@ Num.prototype = {
     
     context.save();
     context.fillStyle = "rgb(0,0,0)";
-    context.fillText(this.num, this.getCenterX(),y);
+    context.fillText(this.num, this.getCenterX(),this.y);
+    if(this.parent){
+      this.lineTo(context);
+    }
     context.restore();
   } 
 }
