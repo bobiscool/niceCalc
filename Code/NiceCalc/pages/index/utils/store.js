@@ -22,3 +22,8 @@ Store.prototype = {
 
 }
 
+
+module.exports = {
+  Store:Store
+}
+
