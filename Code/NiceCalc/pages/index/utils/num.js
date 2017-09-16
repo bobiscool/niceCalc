@@ -25,6 +25,18 @@ Num.prototype = {
     //更新 当前数字对象
     this.num = num
   },
+  getBorder:function(){
+    // 获取这个字段 长宽高
+    var _self = this;
+    var _l = String(_self.num).length;
+
+    return {
+      x:this.x,
+      y:this.y,
+      width:_l*6,
+      height:12
+    }
+  },
   lineTo:function(context){
      if(this.parent){
        context.save();

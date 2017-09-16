@@ -64,5 +64,11 @@ Page({
     b.paint(context);
     c.paint(context);
     context.draw()
+
+
+    /**
+     * 以下是拖拽实现部分
+     */
+    
   }
 })
