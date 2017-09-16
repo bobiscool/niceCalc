@@ -21,6 +21,8 @@ function CheckNum(sth){
 
 
 function Algebra(x,y){
+  this.x = x;
+  this.y = y;
   this.store = new Store();
 }
 
@@ -29,7 +31,7 @@ Algebra.prototype = {
     var _tem = null;
     if(CheckNum(numOrsyb) == 'num'){
 
-      _tem = new Num(this.calcX,this.y,numOrsyb);
+      _tem = new Num(this.calcX(),this.y,numOrsyb);
       this.store.add(_tem);
     }else if(CheckNum(numOrsyb) == 'syb'){
       // _tem = new Num(this.calcX, this.y, numOrsyb);
@@ -57,3 +59,7 @@ Algebra.prototype = {
 
 }
 
+
+module.exports = {
+  Algebra : Algebra
+}

@@ -2,6 +2,8 @@
 //获取应用实例
 var app = getApp()
 var Num = require('./utils/num.js').Num
+var Algebra = require('./utils/algebra.js').Algebra
+
 Page({
   data: {
     motto: 'Hello',
@@ -60,15 +62,30 @@ Page({
    
     var b = new Num(10,10,10);
     var c = new Num(20, 30, 100,b);
-
+    var d = new Algebra(10,50);
+    console.log(d);
+    d.add("100");
+  
+    d.paint(context);
     b.paint(context);
     c.paint(context);
+
+   
+
+
+
+
+
     context.draw()
 
 
     /**
      * 以下是拖拽实现部分
      */
+
+
+   
+
     
   }
 })
