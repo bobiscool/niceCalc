@@ -7,7 +7,9 @@
 var Store = require('./store.js').Store;
 var Num = require('./num.js').Num;
 var Sym = require('./symbol.js').Sym;
+var mathjs = require('./math.min.js')
 
+console.log(mathjs)
 function CheckNum(sth){
   // 检测一个 文字段 是数字还是数学符号 还是不能用于计算
   if(/^\d+$/.test(sth)){
@@ -19,12 +21,16 @@ function CheckNum(sth){
   }
 }
 
+function CheckCalculable(){
+  // 判断是否可以进行计算
 
+}
 
 function Algebra(x,y){
   this.x = x;
   this.y = y;
   this.store = new Store();
+  this.calculated = false;
 }
 
 Algebra.prototype = {
@@ -40,6 +46,7 @@ Algebra.prototype = {
     }
   },
   calcX:function(){
+    //这个是计算位置
     var _temL=0
     
     this.store._store.forEach(function(item){
@@ -47,6 +54,15 @@ Algebra.prototype = {
     });
 
     return _temL+this.x;
+  },
+  calc:function(){
+    //这才是真正的计算
+    var _temAl = '';
+    this.store._store.forEach(function(item){
+       _temAl +=item.getExe();
+    });
+
+    var b = eval(_temAl);
   },
   update:function(){
 

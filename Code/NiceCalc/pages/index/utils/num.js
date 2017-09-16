@@ -21,6 +21,9 @@ Num.prototype = {
     var _l = String(_self.num).length;
     return (this.x - _l*3);
   },
+  getExe() {
+    return this.num;
+  },
   updateNum(num){
     //更新 当前数字对象
     this.num = num

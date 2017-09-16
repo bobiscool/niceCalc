@@ -65,8 +65,17 @@ Page({
     var d = new Algebra(10,50);
     console.log(d);
     d.add("100");
+    d.add("+");    
+    d.add("100");
+    d.add("+");    
+    d.add("1");
     d.add("+");
-  
+    d.add("1");
+    d.add("+");
+    d.add("1");
+    d.add("+");
+    
+    d.calc()
     d.paint(context);
     b.paint(context);
     c.paint(context);
