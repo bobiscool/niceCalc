@@ -65,6 +65,7 @@ Page({
     var d = new Algebra(10,50);
     console.log(d);
     d.add("100");
+    d.add("+");
   
     d.paint(context);
     b.paint(context);

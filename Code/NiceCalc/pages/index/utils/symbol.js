@@ -3,7 +3,7 @@
 function Sym(x, y, sym) {
   this.x = x;
   this.y = y;
-  this.num = num;
+  this.sym = sym;
 }
 
 Sym.prototype = {
@@ -11,12 +11,12 @@ Sym.prototype = {
     // 拿到字体长度 
 
     var _self = this;
-    var _l = String(_self.num).length;
+    var _l = String(_self.sym).length;
     return (this.x - _l * 3);
   },
-  updateNum(sym) {
+  updateSym(sym) {
     //更新 当前符号对象
-    this.sym = symm
+    this.sym = sym
   },
   getBorder: function () {
     // 获取这个字段 长宽高
@@ -33,7 +33,7 @@ Sym.prototype = {
   paint(context) {
     context.save();
     context.fillStyle = "rgb(0,0,0)";
-    context.fillText(this.num, this.getCenterX(), this.y);
+    context.fillText(this.sym, this.getCenterX(), this.y);
     context.restore();
   }
 }

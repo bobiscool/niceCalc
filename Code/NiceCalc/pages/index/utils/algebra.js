@@ -6,6 +6,7 @@
  */
 var Store = require('./store.js').Store;
 var Num = require('./num.js').Num;
+var Sym = require('./symbol.js').Sym;
 
 function CheckNum(sth){
   // 检测一个 文字段 是数字还是数学符号 还是不能用于计算
@@ -34,8 +35,8 @@ Algebra.prototype = {
       _tem = new Num(this.calcX(),this.y,numOrsyb);
       this.store.add(_tem);
     }else if(CheckNum(numOrsyb) == 'syb'){
-      // _tem = new Num(this.calcX, this.y, numOrsyb);
-      // this.store.push(_tem);
+      _tem = new Sym(this.calcX(), this.y, numOrsyb);
+      this.store.add(_tem);
     }
   },
   calcX:function(){
