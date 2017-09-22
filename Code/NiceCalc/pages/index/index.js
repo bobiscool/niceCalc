@@ -4,6 +4,11 @@ var app = getApp()
 var Num = require('./utils/num.js').Num
 var Algebra = require('./utils/algebra.js').Algebra
 
+var wxdraw = require('../../utils/src/index.js').WxDraw;
+var Shape = require('../../utils/src/index.js').Shape;
+
+
+
 Page({
   data: {
     motto: 'Hello',
@@ -26,16 +31,7 @@ Page({
   draw:function(event){
     console.log(event);
     var _self = this;
-    console.log(this.canvas);
-    this.action.push({ x: event.touches[0].pageX, y: event.touches[0].pageY});
 
-    this.canvas.fillStyle = "#000";    
-    this.action.forEach(function(item){
-      _self.canvas.lineTo(item.x, item.y);
-    });
-   
-    this.canvas.stroke();    
-    this.canvas.draw();
   },
   onLoad: function () {
     console.log('onLoad')
@@ -58,7 +54,7 @@ Page({
     var context = wx.createCanvasContext('firstCanvas')
     this.canvas = context;
     this.action = new Array();
-    console.log(Num);
+    console.log(context);
    
     var b = new Num(10,10,10);
     var c = new Num(20, 30, 100,b);
@@ -82,6 +78,20 @@ Page({
 
    
 
+
+
+    /**测试我的 动画引擎
+     * 
+     * */
+
+    var b = new wxdraw(context);
+
+    b.add(new Shape('circle', { x:1 },true));
+    
+    
+    b.draw(context);
+
+    console.log(b);
 
 
 

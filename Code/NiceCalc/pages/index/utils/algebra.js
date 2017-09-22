@@ -7,9 +7,13 @@
 var Store = require('./store.js').Store;
 var Num = require('./num.js').Num;
 var Sym = require('./symbol.js').Sym;
-var mathjs = require('./math.min.js')
+// var Big = require('./big.min.js')
+var wxdraw = require('../../../utils/src/index.js').WxDraw;
+var Shape = require('../../../utils/src/index.js').Shape;
 
-console.log(mathjs)
+
+
+
 function CheckNum(sth){
   // 检测一个 文字段 是数字还是数学符号 还是不能用于计算
   if(/^\d+$/.test(sth)){
@@ -62,7 +66,7 @@ Algebra.prototype = {
        _temAl +=item.getExe();
     });
 
-    var b = eval(_temAl);
+    
   },
   update:function(){
 
